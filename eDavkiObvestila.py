@@ -133,11 +133,6 @@ for index, row in result_df.iterrows():
     </html>
     """
 
-    SENDER_EMAIL = "kosirok@gmail.com"
-    EMAIL_PASSWORD = "qkiryrrhtjrqpunn"
-
-    RECEIVER_EMAIL = "rok.kosi@inin.si"
-
     message = MIMEMultipart()
     message["From"] = SENDER_EMAIL
     message["To"] = RECEIVER_EMAIL
