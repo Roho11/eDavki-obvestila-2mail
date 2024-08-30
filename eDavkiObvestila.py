@@ -6,6 +6,7 @@ from email.mime.text import MIMEText
 import smtplib
 from datetime import datetime
 from bs4 import BeautifulSoup
+import os
 from config import SENDER_EMAIL, EMAIL_PASSWORD, RECEIVER_EMAIL
 
 url = "https://edavki.durs.si/edavkiportal/openportal/commonpages/documents/ajax.aspx"
@@ -48,7 +49,7 @@ for item in response_json['Items']:
     novica = {'id': id, 'naslov': naslov, 'vsebina': vsebina, 'datum': datum}
     list_novic.append(novica)
     
-file_name = "obvestila.txt"
+file_name = os.path.join(os.path.dirname(__file__), "obvestila.txt")
 
 #Prebermo obstoječi seznam
 with open(file_name, "r") as file:
