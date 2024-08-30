@@ -103,7 +103,7 @@ for index, row in result_df.iterrows():
             }}
             .header {{
                 text-align: center;
-                font-size: 24px;
+                font-size: 20px;
                 margin-bottom: 20px;
             }}
             .content {{
