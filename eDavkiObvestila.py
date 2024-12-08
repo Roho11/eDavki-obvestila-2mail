@@ -133,22 +133,22 @@ for index, row in result_df.iterrows():
     </body>
     </html>
     """
+    for email in RECEIVER_EMAIL:
+        message = MIMEMultipart()
+        message["From"] = SENDER_EMAIL
+        message["To"] = RECEIVER_EMAIL
+        message["Subject"] = f'eDavki obvestilo: {id}'
 
-    message = MIMEMultipart()
-    message["From"] = SENDER_EMAIL
-    message["To"] = RECEIVER_EMAIL
-    message["Subject"] = f'eDavki obvestilo: {id}'
 
+        message.attach(MIMEText(html_content, "html"))
 
-    message.attach(MIMEText(html_content, "html"))
-
-    try:
-        server = smtplib.SMTP("smtp.gmail.com", 587)
-        server.starttls()
-        server.login(SENDER_EMAIL, EMAIL_PASSWORD)
-        server.sendmail(SENDER_EMAIL, RECEIVER_EMAIL, message.as_string())
-        print("Email sent successfully to", RECEIVER_EMAIL)
-    except Exception as e:
-        print("Email could not be sent:", str(e))
-    finally:
-        server.quit()
+        try:
+            server = smtplib.SMTP("smtp.gmail.com", 587)
+            server.starttls()
+            server.login(SENDER_EMAIL, EMAIL_PASSWORD)
+            server.sendmail(SENDER_EMAIL, RECEIVER_EMAIL, message.as_string())
+            print("Email sent successfully to", RECEIVER_EMAIL)
+        except Exception as e:
+            print("Email could not be sent:", str(e))
+        finally:
+            server.quit()
