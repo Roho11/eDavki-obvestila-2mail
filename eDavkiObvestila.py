@@ -61,6 +61,7 @@ existing_ids.pop(-1)
 new_news = []
 for novica in list_novic:
     if novica['id'] not in existing_ids:
+        print(novica['id'])
         new_news.append(novica['id'])
         
 for n in new_news:
@@ -136,7 +137,7 @@ for index, row in result_df.iterrows():
     for email in RECEIVER_EMAIL:
         message = MIMEMultipart()
         message["From"] = SENDER_EMAIL
-        message["To"] = RECEIVER_EMAIL
+        message["To"] = email
         message["Subject"] = f'eDavki obvestilo: {id}'
 
 
@@ -146,8 +147,8 @@ for index, row in result_df.iterrows():
             server = smtplib.SMTP("smtp.gmail.com", 587)
             server.starttls()
             server.login(SENDER_EMAIL, EMAIL_PASSWORD)
-            server.sendmail(SENDER_EMAIL, RECEIVER_EMAIL, message.as_string())
-            print("Email sent successfully to", RECEIVER_EMAIL)
+            server.sendmail(SENDER_EMAIL, email, message.as_string())
+            print("Email sent successfully to", email)
         except Exception as e:
             print("Email could not be sent:", str(e))
         finally:
