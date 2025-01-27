@@ -5,4 +5,4 @@ config.py >> mora imeti spremenljivke SENDER_EMAIL, EMAIL_PASSWORD, RECEIVER_EMA
 
 1. Prebere vsa obvestila iz https://edavki.durs.si/edavkiportal/openportal/commonpages/opdynp/pageedavkirssview.aspx?rid=e_davki (objavljenih je zadnjih 20)
 2. V obvestila.txt zapiše ID novice, ki še ne obstajajo v datoteki
-3. Pošlje HTML mail z naslovom, vsebino in datumom objave
+3. Pošlje mail z naslovom, vsebino in datumom objave
